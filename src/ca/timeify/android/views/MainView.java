@@ -1,9 +1,10 @@
-package ca.timeify.android;
+package ca.timeify.android.views;
 
+import ca.timeify.android.R;
+import ca.timeify.android.activities.BaseActivity;
 import android.os.Bundle;
-import android.app.Activity;
 
-public class MainView extends Activity {
+public class MainView extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
