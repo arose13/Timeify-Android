@@ -2,6 +2,7 @@ package ca.timeify.android.views;
 
 import ca.timeify.android.R;
 import ca.timeify.android.activities.BaseActivity;
+
 import android.os.Bundle;
 
 public class MainView extends BaseActivity {
