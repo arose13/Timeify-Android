@@ -23,7 +23,7 @@
         </activity>
         
         <activity
-            android:name="ca.timeify.android.views.MainView" >
+            android:name="ca.timeify.android.views.ImageCaptureView" >
             <intent-filter>
                 <action android:name="android.intent.action.MAINVIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
