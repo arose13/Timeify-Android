@@ -23,6 +23,9 @@ public final class R {
          */
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
+        /**  Splash Card dimensions 
+         */
+        public static final int splashCardRadius=0x7f050002;
     }
     public static final class drawable {
         public static final int ab_background_textured_yorku=0x7f020000;
@@ -58,6 +61,7 @@ public final class R {
         public static final int tab_unselected_focused_yorku=0x7f02001e;
         public static final int tab_unselected_pressed_yorku=0x7f02001f;
         public static final int tab_unselected_yorku=0x7f020020;
+        public static final int yourtime_container=0x7f020021;
     }
     public static final class id {
         public static final int action_settings=0x7f090000;
@@ -73,6 +77,10 @@ public final class R {
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060002;
+        public static final int splash_firstline=0x7f060004;
+        public static final int splash_secondline=0x7f060005;
+        public static final int splash_text=0x7f060003;
+        public static final int splash_thirdline=0x7f060006;
     }
     public static final class style {
         public static final int ActionBar_Solid_Yorku=0x7f070003;

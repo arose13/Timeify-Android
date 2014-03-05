@@ -4,5 +4,9 @@
     <string name="app_name">Timeify</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="splash_text">Timeify</string>
+    <string name="splash_firstline">NOW IT\'S</string>
+    <string name="splash_secondline">YOUR</string>
+    <string name="splash_thirdline">TIME</string>
 
 </resources>
