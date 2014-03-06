@@ -45,6 +45,7 @@ public class SplashView extends BaseActivity {
 				Intent cameraIntent = new Intent(SplashView.this, ImageCaptureView.class);
 				startActivity(cameraIntent);
 				overridePendingTransition(R.anim.activity_transition_anim_enter, R.anim.activity_transition_anim_exit);
+				finish();
 			}
 			
 		}, splashViewTimer);
