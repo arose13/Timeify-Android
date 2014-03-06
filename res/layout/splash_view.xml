@@ -6,6 +6,11 @@
     tools:ignore="SpUsage"
     android:background="@android:color/white" >
 
-    
+    <ImageView
+        android:id="@+id/splashIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/bigicon" />
 
 </RelativeLayout>

@@ -10,6 +10,11 @@ public class CustomAnimation {
 		return (seconds*1000);
 	}
 	
+	public Animation delayAnimation(Animation inputAnimation) {
+		inputAnimation.setStartOffset(200);
+		return inputAnimation;
+	}
+	
 	public Animation loopAnimation(Animation inputAnimation) {
 		inputAnimation.setRepeatMode(Animation.RESTART);
 		inputAnimation.setRepeatCount(Animation.INFINITE);
@@ -36,6 +41,6 @@ public class CustomAnimation {
 		inFromTop.setDuration(milis);
 		inFromTop.setInterpolator(animationInterpolator);
 		return inFromTop;
-	} 
+	}
 	
 }
