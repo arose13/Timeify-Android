@@ -28,7 +28,15 @@
         <activity
             android:name="ca.timeify.android.views.ImageCaptureView" >
             <intent-filter>
-                <action android:name="android.intent.action.MAINVIEW"/>
+                <action android:name="android.intent.action.IMAGECAPTUREVIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="ca.timeify.android.views.ComfirmImageView" >
+            <intent-filter>
+                <action android:name="android.intent.action.CONFIRMIMAGEVIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
