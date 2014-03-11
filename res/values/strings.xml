@@ -8,5 +8,7 @@
     <string name="splash_firstline">NOW IT\'S</string>
     <string name="splash_secondline">YOUR</string>
     <string name="splash_thirdline">TIME</string>
+    <string name="browse_btn">Browse</string>
+    <string name="selectImage">Select Image</string>
 
 </resources>

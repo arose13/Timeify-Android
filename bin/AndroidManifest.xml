@@ -26,7 +26,8 @@
         </activity>
         
         <activity
-            android:name="ca.timeify.android.views.ImageCaptureView" >
+            android:name="ca.timeify.android.views.ImageCaptureView"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.IMAGECAPTUREVIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -34,7 +35,8 @@
         </activity>
         
         <activity
-            android:name="ca.timeify.android.views.ComfirmImageView" >
+            android:name="ca.timeify.android.views.ComfirmImageView"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.CONFIRMIMAGEVIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>

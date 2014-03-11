@@ -6,5 +6,10 @@
     
     <!-- Splash Card dimensions -->
     <dimen name="splashCardRadius">1dp</dimen>
+    
+    <dimen name="margin_sm">4dp</dimen>
+    <dimen name="margin">8dp</dimen>
+    <dimen name="margin_med">16dp</dimen>
+    <dimen name="margin_lg">32dp</dimen>
 
 </resources>

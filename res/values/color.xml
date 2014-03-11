@@ -3,5 +3,6 @@
     <color name="yorkU_Red">#e4393f</color>
     <color name="yorkU_White">#fdffff</color>
     
-    <color name="gray_dark">#171615</color>    
+    <color name="gray_dark">#171615</color>
+    <color name="gray">#333333</color>  
 </resources>
