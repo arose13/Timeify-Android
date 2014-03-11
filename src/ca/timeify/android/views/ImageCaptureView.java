@@ -50,8 +50,19 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		
-		// The image is now below for modification
-		Bitmap recievedCameraImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
+		switch (resultCode) {
+		case IMAGECAPTURE_CODE:
+			/* Received image is now ready for modifications */
+			Bitmap recievedCameraImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
+			break;
+			
+		case BROWSEIMAGE_CODE:
+			/* Received Image from browsing. */
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	@Override
