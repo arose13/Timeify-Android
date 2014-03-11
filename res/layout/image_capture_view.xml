@@ -26,6 +26,7 @@
 		android:paddingLeft="@dimen/margin_lg"
         android:background="@drawable/red_btn"
         android:text="@string/browse_btn"
+        android:textSize="24sp"
         android:textColor="@color/yorkU_White" />
 
 </RelativeLayout>
