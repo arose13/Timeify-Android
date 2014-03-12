@@ -5,14 +5,24 @@
     android:padding="@dimen/activity_horizontal_margin"
     tools:context=".ImageCaptureView"
     tools:ignore="ContentDescription"
-    android:background="@color/gray" >
+    android:background="@color/gray_darkblue" >
+    
+    <TextView
+        android:id="@+id/instructionsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="@dimen/margin_lg"
+        android:text="@string/instructionsText"
+        android:textColor="@color/yorkU_White"
+        android:textSize="24sp" />
     
     <ImageView
         android:id="@+id/capture_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/capture_btn" />
+        android:src="@drawable/camera_btn_v3" />
     
     <Button
         android:id="@+id/browseImg_btn"
@@ -26,7 +36,7 @@
 		android:paddingLeft="@dimen/margin_lg"
         android:background="@drawable/red_btn"
         android:text="@string/browse_btn"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textColor="@color/yorkU_White" />
 
 </RelativeLayout>

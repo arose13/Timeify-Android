@@ -16,8 +16,10 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int gray=0x7f050003;
-        public static final int gray_dark=0x7f050002;
+        public static final int blue_text=0x7f050002;
+        public static final int gray=0x7f050005;
+        public static final int gray_dark=0x7f050003;
+        public static final int gray_darkblue=0x7f050004;
         public static final int yorkU_Red=0x7f050000;
         public static final int yorkU_White=0x7f050001;
     }
@@ -52,37 +54,40 @@ public final class R {
         public static final int btn_cab_done_yorku=0x7f02000a;
         public static final int cab_background_bottom_yorku=0x7f02000b;
         public static final int cab_background_top_yorku=0x7f02000c;
-        public static final int capture_btn=0x7f02000d;
-        public static final int ic_launcher=0x7f02000e;
-        public static final int list_focused_yorku=0x7f02000f;
-        public static final int list_pressed_yorku=0x7f020010;
-        public static final int menu_dropdown_panel_yorku=0x7f020011;
-        public static final int progress_bg_yorku=0x7f020012;
-        public static final int progress_horizontal_yorku=0x7f020013;
-        public static final int progress_primary_yorku=0x7f020014;
-        public static final int progress_secondary_yorku=0x7f020015;
-        public static final int red_btn=0x7f020016;
-        public static final int selectable_background_yorku=0x7f020017;
-        public static final int spinner_ab_default_yorku=0x7f020018;
-        public static final int spinner_ab_disabled_yorku=0x7f020019;
-        public static final int spinner_ab_focused_yorku=0x7f02001a;
-        public static final int spinner_ab_pressed_yorku=0x7f02001b;
-        public static final int spinner_background_ab_yorku=0x7f02001c;
-        public static final int tab_indicator_ab_yorku=0x7f02001d;
-        public static final int tab_selected_focused_yorku=0x7f02001e;
-        public static final int tab_selected_pressed_yorku=0x7f02001f;
-        public static final int tab_selected_yorku=0x7f020020;
-        public static final int tab_unselected_focused_yorku=0x7f020021;
-        public static final int tab_unselected_pressed_yorku=0x7f020022;
-        public static final int tab_unselected_yorku=0x7f020023;
-        public static final int white_btn=0x7f020024;
-        public static final int yourtime_container=0x7f020025;
+        public static final int camera_btn_v2=0x7f02000d;
+        public static final int camera_btn_v3=0x7f02000e;
+        public static final int capture_btn=0x7f02000f;
+        public static final int ic_launcher=0x7f020010;
+        public static final int list_focused_yorku=0x7f020011;
+        public static final int list_pressed_yorku=0x7f020012;
+        public static final int menu_dropdown_panel_yorku=0x7f020013;
+        public static final int progress_bg_yorku=0x7f020014;
+        public static final int progress_horizontal_yorku=0x7f020015;
+        public static final int progress_primary_yorku=0x7f020016;
+        public static final int progress_secondary_yorku=0x7f020017;
+        public static final int red_btn=0x7f020018;
+        public static final int selectable_background_yorku=0x7f020019;
+        public static final int spinner_ab_default_yorku=0x7f02001a;
+        public static final int spinner_ab_disabled_yorku=0x7f02001b;
+        public static final int spinner_ab_focused_yorku=0x7f02001c;
+        public static final int spinner_ab_pressed_yorku=0x7f02001d;
+        public static final int spinner_background_ab_yorku=0x7f02001e;
+        public static final int tab_indicator_ab_yorku=0x7f02001f;
+        public static final int tab_selected_focused_yorku=0x7f020020;
+        public static final int tab_selected_pressed_yorku=0x7f020021;
+        public static final int tab_selected_yorku=0x7f020022;
+        public static final int tab_unselected_focused_yorku=0x7f020023;
+        public static final int tab_unselected_pressed_yorku=0x7f020024;
+        public static final int tab_unselected_yorku=0x7f020025;
+        public static final int white_btn=0x7f020026;
+        public static final int yourtime_container=0x7f020027;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0003;
-        public static final int browseImg_btn=0x7f0a0001;
-        public static final int capture_btn=0x7f0a0000;
-        public static final int splashIcon=0x7f0a0002;
+        public static final int action_settings=0x7f0a0004;
+        public static final int browseImg_btn=0x7f0a0002;
+        public static final int capture_btn=0x7f0a0001;
+        public static final int instructionsText=0x7f0a0000;
+        public static final int splashIcon=0x7f0a0003;
     }
     public static final class layout {
         public static final int image_capture_view=0x7f030000;
@@ -96,6 +101,7 @@ public final class R {
         public static final int app_name=0x7f070000;
         public static final int browse_btn=0x7f070007;
         public static final int hello_world=0x7f070002;
+        public static final int instructionsText=0x7f070009;
         public static final int selectImage=0x7f070008;
         public static final int splash_firstline=0x7f070004;
         public static final int splash_secondline=0x7f070005;

@@ -10,5 +10,6 @@
     <string name="splash_thirdline">TIME</string>
     <string name="browse_btn">Browse</string>
     <string name="selectImage">Select Image</string>
+    <string name="instructionsText">Take A Pic</string>
 
 </resources>

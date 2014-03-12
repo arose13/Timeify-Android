@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ImageCaptureView extends BaseActivity implements OnClickListener {
 	
@@ -19,6 +20,7 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 	private static final String IMAGECAPTURE_KEY = "data";
 	
 	private ImageView captureButton;
+	private TextView instructionsTextView;
 	private Button browseButton;
 	
 	@Override
@@ -26,6 +28,7 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.image_capture_view);
 		
+		instructionsTextView = (TextView) findViewById(R.id.instructionsText);
 		browseButton = (Button) findViewById(R.id.browseImg_btn);
 		captureButton = (ImageView) findViewById(R.id.capture_btn);
 		
@@ -33,6 +36,7 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 		captureButton.setOnClickListener(this);
 		
 		customFonts.typeFaceConstructor(browseButton, Roboto.LIGHT, getAssets());
+		customFonts.typeFaceConstructor(instructionsTextView, Roboto.LIGHT, getAssets());
 	}
 	
 	private void browseImageIntent() {
