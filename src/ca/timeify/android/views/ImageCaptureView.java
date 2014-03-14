@@ -7,6 +7,7 @@ import ca.timeify.android.data.Fonts.Roboto;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -19,8 +20,8 @@ import android.widget.TextView;
 public class ImageCaptureView extends BaseActivity implements OnClickListener {
 	
 	private static final long ANIMATION_DURATION = 300;
-	private static final int IMAGECAPTURE_CODE = 0;
-	private static final int BROWSEIMAGE_CODE = 1;
+	private static final int IMAGECAPTURE_CODE = 2014;
+	private static final int BROWSEIMAGE_CODE = 2015;
 	private static final String IMAGECAPTURE_KEY = "data";
 	
 	private Animation browseDelayOvershoot;
@@ -79,18 +80,21 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		
-		switch (resultCode) {
+		switch (requestCode) {
 		case IMAGECAPTURE_CODE:
 			/* Received image is now ready for modifications */
 			receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
+			Log.d("ImageCapture", "camera successfully ran");
 			break;
 			
 		case BROWSEIMAGE_CODE:
 			/* Received Image from browsing. */
 			receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
+			Log.d("ImageCapture", "browse successfully ran");
 			break;
 
 		default:
+			Log.e("ImageCapture", "nothing ran");
 			break;
 		}
 	}
