@@ -3,8 +3,6 @@ package ca.timeify.android.activities;
 import ca.timeify.android.R;
 import ca.timeify.android.data.CustomAnimation;
 import ca.timeify.android.data.Fonts;
-import ca.timeify.android.views.ImageCaptureView;
-import ca.timeify.android.views.PreviewImageView;
 
 import android.app.Activity;
 import android.content.Context;

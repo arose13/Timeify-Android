@@ -35,6 +35,15 @@
         </activity>
         
         <activity
+            android:name="ca.timeify.android.views.PreviewImageView"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.PREVIEWIMAGEVIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        
+        <activity
             android:name="ca.timeify.android.views.ComfirmImageView"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
