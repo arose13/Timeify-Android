@@ -15,7 +15,7 @@
 		android:layout_marginTop="@dimen/margin_lg"
         android:text="@string/instructionsText"
         android:textColor="@color/yorkU_White"
-        android:textSize="24sp" />
+        android:textSize="28sp" />
     
     <ImageView
         android:id="@+id/capture_btn"

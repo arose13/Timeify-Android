@@ -9,7 +9,6 @@ import android.widget.ImageView;
 
 import ca.timeify.android.R;
 import ca.timeify.android.activities.BaseActivity;
-import ca.timeify.android.data.CustomAnimation;
 
 public class SplashView extends BaseActivity {
 	
@@ -17,7 +16,6 @@ public class SplashView extends BaseActivity {
 	private static long splashIconAnimationDuration = 500;
 	private static long splashIconAnimationDelay = 250;
 	
-	private CustomAnimation customAnimation = new CustomAnimation();
 	private Animation splashIconAnimation;
 	private ImageView splashIcon;
 	

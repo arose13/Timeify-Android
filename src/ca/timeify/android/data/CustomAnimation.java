@@ -24,7 +24,7 @@ public class CustomAnimation {
 	public Animation fromRightToLeftAnimation(long milis, Interpolator animationInterpolator) {
 		Animation fromRightToLeft = new TranslateAnimation(
 				Animation.RELATIVE_TO_PARENT, +1.0f,
-				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, -1.0f,
 				Animation.RELATIVE_TO_PARENT, 0.0f,
 				Animation.RELATIVE_TO_PARENT, 0.0f);
 		fromRightToLeft.setDuration(milis);
@@ -41,6 +41,17 @@ public class CustomAnimation {
 		inFromTop.setDuration(milis);
 		inFromTop.setInterpolator(animationInterpolator);
 		return inFromTop;
+	}
+	
+	public Animation inFromRightAnimation(long milis, Interpolator animationInterpolator) {
+		Animation inFromRight = new TranslateAnimation(
+				Animation.RELATIVE_TO_PARENT, +1.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f);
+		inFromRight.setDuration(milis);
+		inFromRight.setInterpolator(animationInterpolator);
+		return inFromRight;
 	}
 	
 }
