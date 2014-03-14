@@ -85,15 +85,17 @@ public final class R {
         public static final int yourtime_container=0x7f020027;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0004;
+        public static final int action_settings=0x7f0a0005;
         public static final int browseImg_btn=0x7f0a0002;
         public static final int capture_btn=0x7f0a0001;
         public static final int instructionsText=0x7f0a0000;
-        public static final int splashIcon=0x7f0a0003;
+        public static final int previewImageView=0x7f0a0003;
+        public static final int splashIcon=0x7f0a0004;
     }
     public static final class layout {
         public static final int image_capture_view=0x7f030000;
-        public static final int splash_view=0x7f030001;
+        public static final int preview_image_view=0x7f030001;
+        public static final int splash_view=0x7f030002;
     }
     public static final class menu {
         public static final int main_view=0x7f090000;

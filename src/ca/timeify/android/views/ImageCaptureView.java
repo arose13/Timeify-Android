@@ -51,7 +51,7 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 		customFonts.typeFaceConstructor(browseButton, Roboto.LIGHT, getAssets());
 		customFonts.typeFaceConstructor(instructionsTextView, Roboto.LIGHT, getAssets());
 		
-		//Animation Init
+		//Animation Settings
 		instructionsDelayOvershoot = customAnimation.inFromRightAnimation(ANIMATION_DURATION, new OvershootInterpolator(1.0f));
 		instructionsDelayOvershoot.setStartOffset(200);
 		browseDelayOvershoot = customAnimation.inFromRightAnimation(ANIMATION_DURATION, new OvershootInterpolator(1.0f));
@@ -76,27 +76,41 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 		startActivityForResult(cameraStartIntent, IMAGECAPTURE_CODE);
 	}
 	
+	private void exportImageIntent() {
+		Intent imagePreviewIntent = new Intent(ImageCaptureView.this, PreviewImageView.class);
+		startActivity(imagePreviewIntent);
+	}
+	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		
-		switch (requestCode) {
-		case IMAGECAPTURE_CODE:
-			/* Received image is now ready for modifications */
-			receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
-			Log.d("ImageCapture", "camera successfully ran");
-			break;
+		if (resultCode == RESULT_OK) {
+			Log.d("ImageCapture", "result ok");
 			
-		case BROWSEIMAGE_CODE:
-			/* Received Image from browsing. */
-			receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
-			Log.d("ImageCapture", "browse successfully ran");
-			break;
+			// Figure where the image is coming from.
+			switch (requestCode) {
+			case IMAGECAPTURE_CODE:
+				/* Received image is now ready for modifications */
+				receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
+				Log.d("ImageCapture", "camera successfully ran");
+				break;
+				
+			case BROWSEIMAGE_CODE:
+				/* Received Image from browsing. */
+				receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
+				Log.d("ImageCapture", "browse successfully ran");
+				break;
 
-		default:
-			Log.e("ImageCapture", "nothing ran");
-			break;
+			default:
+				Log.e("ImageCapture", "nothing ran");
+				break;
+			}
+		} else {
+			// Result code,
+			Log.e("ImageCapture", "result failed");
 		}
+		
 	}
 
 	@Override
