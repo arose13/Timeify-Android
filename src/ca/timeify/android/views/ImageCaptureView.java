@@ -22,7 +22,6 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 	private static final long ANIMATION_DURATION = 300;
 	private static final int IMAGECAPTURE_CODE = 2014;
 	private static final int BROWSEIMAGE_CODE = 2015;
-	private static final String IMAGECAPTURE_KEY = "data";
 	
 	private Animation browseDelayOvershoot;
 	private Animation instructionsDelayOvershoot;
@@ -76,11 +75,6 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 		startActivityForResult(cameraStartIntent, IMAGECAPTURE_CODE);
 	}
 	
-	private void exportImageIntent() {
-		Intent imagePreviewIntent = new Intent(ImageCaptureView.this, PreviewImageView.class);
-		startActivity(imagePreviewIntent);
-	}
-	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -93,12 +87,14 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 			case IMAGECAPTURE_CODE:
 				/* Received image is now ready for modifications */
 				receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
+				exportImageIntent(receivedImage, ImageCaptureView.this, PreviewImageView.class);
 				Log.d("ImageCapture", "camera successfully ran");
 				break;
 				
 			case BROWSEIMAGE_CODE:
 				/* Received Image from browsing. */
 				receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
+				exportImageIntent(receivedImage, ImageCaptureView.this, PreviewImageView.class);
 				Log.d("ImageCapture", "browse successfully ran");
 				break;
 
