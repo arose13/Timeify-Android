@@ -30,6 +30,8 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 	private TextView instructionsTextView;
 	private Button browseButton;
 	
+	private Bitmap receivedImage;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -80,11 +82,12 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 		switch (resultCode) {
 		case IMAGECAPTURE_CODE:
 			/* Received image is now ready for modifications */
-			Bitmap recievedCameraImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
+			receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
 			break;
 			
 		case BROWSEIMAGE_CODE:
 			/* Received Image from browsing. */
+			receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
 			break;
 
 		default:
