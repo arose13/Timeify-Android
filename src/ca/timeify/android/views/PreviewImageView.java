@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnticipateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
@@ -105,26 +106,22 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		switch (killConstant) {
 		case KILL_BACK_BTN:
 			// Set Delays
-			noBtnExitAnimation.setStartOffset(OVERALL_DELAY);
-			yesBtnExitAnimation.setStartOffset(OVERALL_DELAY + 150);
+			noBtnExitAnimation.setStartOffset(0);
+			yesBtnExitAnimation.setStartOffset(OVERALL_DELAY);
 			startExitAnimation();
-			// Finish Activity
-			finish();
 			break;
 			
 		case KILL_NO_BTN:
 			// Set Delays
-			noBtnExitAnimation.setStartOffset(OVERALL_DELAY);
-			yesBtnExitAnimation.setStartOffset(OVERALL_DELAY + 150);
+			noBtnExitAnimation.setStartOffset(0);
+			yesBtnExitAnimation.setStartOffset(OVERALL_DELAY);
 			startExitAnimation();
-			// Finish Activity
-			finish();
 			break;
 			
 		case KILL_YES_BTN:
 			// Set Delays
-			noBtnExitAnimation.setStartOffset(OVERALL_DELAY + 150);
-			yesBtnExitAnimation.setStartOffset(OVERALL_DELAY);
+			noBtnExitAnimation.setStartOffset(OVERALL_DELAY);
+			yesBtnExitAnimation.setStartOffset(0);
 			startExitAnimation();
 			// To Next Activty
 			// TODO THE FINAL ACTIVITY!
@@ -143,6 +140,23 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	private void setupExitAnimations() {
 		noBtnExitAnimation = customAnimation.outToTopAnimation(ANIMATION_DURATION, new AnticipateInterpolator(1.0f));
 		yesBtnExitAnimation = customAnimation.outToTopAnimation(ANIMATION_DURATION, new AnticipateInterpolator(1.0f));
+		yesBtnExitAnimation.setAnimationListener(new AnimationListener() {
+			
+			@Override
+			public void onAnimationStart(Animation animation) {
+				//Do Nothing
+			}
+			
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// Do Nothing
+			}
+			
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				finish();
+			}
+		});
 	}
 	
 	private Bitmap getBitmapFromUri(Uri imageUri) {

@@ -67,6 +67,7 @@ public class CustomAnimation {
 				Animation.RELATIVE_TO_PARENT, -1.0f);
 		outToTop.setDuration(milis);
 		outToTop.setInterpolator(animationInterpolator);
+		outToTop.setFillAfter(true);
 		return outToTop;
 	}
 	
