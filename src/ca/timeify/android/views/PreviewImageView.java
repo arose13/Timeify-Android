@@ -51,6 +51,10 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		previewImageView = (ImageView) findViewById(R.id.previewImageView);
 		previewImageView.setVisibility(View.VISIBLE);
 		
+		// Set OnClickListners
+		yesButton.setOnClickListener(this);
+		noButton.setOnClickListener(this);
+		
 		// Setup Animations
 		noBtnAnimation = customAnimation.scaleInAnimation(ANIMATION_DURATION, new OvershootInterpolator(1.0f), this);
 		noBtnAnimation.setStartOffset(OVERALL_DELAY);
