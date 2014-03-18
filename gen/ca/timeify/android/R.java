@@ -41,6 +41,10 @@ public final class R {
         /**  Splash Card dimensions 
          */
         public static final int splashCardRadius=0x7f060002;
+        /**  Button Dimens 
+         */
+        public static final int yesnoBtn=0x7f060007;
+        public static final int yesnoRingThinkness=0x7f060008;
     }
     public static final class drawable {
         public static final int ab_background_textured_yorku=0x7f020000;
@@ -63,27 +67,30 @@ public final class R {
         public static final int list_focused_yorku=0x7f020011;
         public static final int list_pressed_yorku=0x7f020012;
         public static final int menu_dropdown_panel_yorku=0x7f020013;
-        public static final int progress_bg_yorku=0x7f020014;
-        public static final int progress_horizontal_yorku=0x7f020015;
-        public static final int progress_primary_yorku=0x7f020016;
-        public static final int progress_secondary_yorku=0x7f020017;
-        public static final int red_btn=0x7f020018;
-        public static final int selectable_background_yorku=0x7f020019;
-        public static final int spinner_ab_default_yorku=0x7f02001a;
-        public static final int spinner_ab_disabled_yorku=0x7f02001b;
-        public static final int spinner_ab_focused_yorku=0x7f02001c;
-        public static final int spinner_ab_pressed_yorku=0x7f02001d;
-        public static final int spinner_background_ab_yorku=0x7f02001e;
-        public static final int tab_indicator_ab_yorku=0x7f02001f;
-        public static final int tab_selected_focused_yorku=0x7f020020;
-        public static final int tab_selected_pressed_yorku=0x7f020021;
-        public static final int tab_selected_yorku=0x7f020022;
-        public static final int tab_unselected_focused_yorku=0x7f020023;
-        public static final int tab_unselected_pressed_yorku=0x7f020024;
-        public static final int tab_unselected_yorku=0x7f020025;
-        public static final int white_btn=0x7f020026;
-        public static final int yes=0x7f020027;
-        public static final int yourtime_container=0x7f020028;
+        public static final int no=0x7f020014;
+        public static final int no_btn=0x7f020015;
+        public static final int progress_bg_yorku=0x7f020016;
+        public static final int progress_horizontal_yorku=0x7f020017;
+        public static final int progress_primary_yorku=0x7f020018;
+        public static final int progress_secondary_yorku=0x7f020019;
+        public static final int red_btn=0x7f02001a;
+        public static final int selectable_background_yorku=0x7f02001b;
+        public static final int spinner_ab_default_yorku=0x7f02001c;
+        public static final int spinner_ab_disabled_yorku=0x7f02001d;
+        public static final int spinner_ab_focused_yorku=0x7f02001e;
+        public static final int spinner_ab_pressed_yorku=0x7f02001f;
+        public static final int spinner_background_ab_yorku=0x7f020020;
+        public static final int tab_indicator_ab_yorku=0x7f020021;
+        public static final int tab_selected_focused_yorku=0x7f020022;
+        public static final int tab_selected_pressed_yorku=0x7f020023;
+        public static final int tab_selected_yorku=0x7f020024;
+        public static final int tab_unselected_focused_yorku=0x7f020025;
+        public static final int tab_unselected_pressed_yorku=0x7f020026;
+        public static final int tab_unselected_yorku=0x7f020027;
+        public static final int white_btn=0x7f020028;
+        public static final int yes=0x7f020029;
+        public static final int yes_btn=0x7f02002a;
+        public static final int yourtime_container=0x7f02002b;
     }
     public static final class id {
         public static final int action_settings=0x7f0a0005;

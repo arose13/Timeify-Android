@@ -11,5 +11,9 @@
     <dimen name="margin">8dp</dimen>
     <dimen name="margin_med">16dp</dimen>
     <dimen name="margin_lg">32dp</dimen>
+    
+    <!-- Button Dimens -->
+    <dimen name="yesnoBtn">48dp</dimen>
+    <dimen name="yesnoRingThinkness">4dp</dimen>
 
 </resources>
