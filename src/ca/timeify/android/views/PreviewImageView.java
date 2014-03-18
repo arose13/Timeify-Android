@@ -15,12 +15,13 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnticipateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 
-public class PreviewImageView extends BaseActivity {
+public class PreviewImageView extends BaseActivity implements OnClickListener {
 	
 	private static final long ANIMATION_DURATION = 300;
 	private static final long OVERALL_DELAY = 150;
@@ -77,6 +78,22 @@ public class PreviewImageView extends BaseActivity {
 	public void onBackPressed() {
 		super.onBackPressed();
 		killActivityProcedure(KILL_BACK_BTN);
+	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.yesBtn:
+			killActivityProcedure(KILL_YES_BTN);
+			break;
+			
+		case R.id.noBtn:
+			killActivityProcedure(KILL_NO_BTN);
+			break;
+
+		default:
+			break;
+		}
 	}
 	
 	// On back or Delete Button Select
