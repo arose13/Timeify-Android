@@ -18,7 +18,7 @@
         android:layout_margin="@dimen/margin_lg">
         
         <ImageView
-	        android:id="@+id/yesBtn"
+	        android:id="@+id/yesUIBtn"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_alignParentBottom="true"
@@ -29,7 +29,7 @@
 	        android:contentDescription="@string/yesBtnInformation"/>
 	
 	    <ImageView
-	        android:id="@+id/noBtn"
+	        android:id="@+id/noUIBtn"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_alignParentLeft="true"

@@ -47,8 +47,8 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		Log.d("PreviewImageView", "PreviewImageView started");
 		
 		// Find Views
-		yesButton = (ImageView) findViewById(R.id.yesBtn);
-		noButton = (ImageView) findViewById(R.id.noBtn);
+		yesButton = (ImageView) findViewById(R.id.yesUIBtn);
+		noButton = (ImageView) findViewById(R.id.noUIBtn);
 		previewImageView = (ImageView) findViewById(R.id.previewImageView);
 		previewImageView.setVisibility(View.VISIBLE);
 		
@@ -88,11 +88,13 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.yesBtn:
+		case R.id.yesUIBtn:
+			Log.d("PreviewImageView", "yes btn pushed");
 			killActivityProcedure(KILL_YES_BTN);
 			break;
 			
-		case R.id.noBtn:
+		case R.id.noUIBtn:
+			Log.d("PreviewImageView", "no btn pushed");
 			killActivityProcedure(KILL_NO_BTN);
 			break;
 
@@ -123,7 +125,7 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 			noBtnExitAnimation.setStartOffset(OVERALL_DELAY);
 			yesBtnExitAnimation.setStartOffset(0);
 			startExitAnimation();
-			// To Next Activty
+			// To Next Activity
 			// TODO THE FINAL ACTIVITY!
 			break;
 
@@ -138,8 +140,8 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	}
 
 	private void setupExitAnimations() {
-		noBtnExitAnimation = customAnimation.outToTopAnimation(ANIMATION_DURATION, new AnticipateInterpolator(1.0f));
-		yesBtnExitAnimation = customAnimation.outToTopAnimation(ANIMATION_DURATION, new AnticipateInterpolator(1.0f));
+		noBtnExitAnimation = customAnimation.outToTopAnimation(android.R.integer.config_shortAnimTime, new AnticipateInterpolator(1.0f));
+		yesBtnExitAnimation = customAnimation.outToTopAnimation(android.R.integer.config_shortAnimTime, new AnticipateInterpolator(1.0f));
 		yesBtnExitAnimation.setAnimationListener(new AnimationListener() {
 			
 			@Override
