@@ -6,6 +6,7 @@ import ca.timeify.android.data.Fonts.Roboto;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -78,6 +79,7 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
+		Uri imageUri;
 		
 		if (resultCode == RESULT_OK) {
 			Log.d("ImageCapture", "result ok");
@@ -87,14 +89,16 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 			case IMAGECAPTURE_CODE:
 				/* Received image is now ready for modifications */
 				receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
-				exportImageIntent(receivedImage, ImageCaptureView.this, PreviewImageView.class);
+				imageUri = data.getData();
+				exportImageIntent(receivedImage, imageUri, ImageCaptureView.this, PreviewImageView.class);
 				Log.d("ImageCapture", "camera successfully ran");
 				break;
 				
 			case BROWSEIMAGE_CODE:
-				/* Received Image from browsing. */
+				/* Received Image from browsing.*/
 				receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
-				exportImageIntent(receivedImage, ImageCaptureView.this, PreviewImageView.class);
+				imageUri = data.getData();
+				exportImageIntent(receivedImage, imageUri, ImageCaptureView.this, PreviewImageView.class);
 				Log.d("ImageCapture", "browse successfully ran");
 				break;
 

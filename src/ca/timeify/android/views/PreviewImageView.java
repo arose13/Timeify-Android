@@ -3,7 +3,9 @@ package ca.timeify.android.views;
 import ca.timeify.android.R;
 import ca.timeify.android.activities.BaseActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,8 @@ import android.widget.ImageView;
 public class PreviewImageView extends BaseActivity {
 	
 	private Bitmap image;
+	private Uri imageUri;
+	private Intent receivedIntent;
 	
 	private ImageView previewImageView;
 	private ImageView yesButton;
@@ -25,11 +29,16 @@ public class PreviewImageView extends BaseActivity {
 		
 		// Find Views
 		previewImageView = (ImageView) findViewById(R.id.previewImageView);
-		previewImageView.setVisibility(View.INVISIBLE);
+		previewImageView.setVisibility(View.VISIBLE);
 		
 		// Find received Data
-		image = (Bitmap) getIntent().getParcelableExtra(IMAGECAPTURE_KEY);
-		previewImageView.setImageBitmap(image); 
+		receivedIntent = getIntent();
+		imageUri = receivedIntent.getParcelableExtra(IMAGE_URI_KEY);
+		processImage();
+	}
+
+	private void processImage() {
+		previewImageView.setImageURI(imageUri);
 	}
 	
 }
