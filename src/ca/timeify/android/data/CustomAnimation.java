@@ -1,6 +1,10 @@
 package ca.timeify.android.data;
 
+import ca.timeify.android.R;
+
+import android.content.Context;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.view.animation.TranslateAnimation;
 
@@ -21,6 +25,7 @@ public class CustomAnimation {
 		return inputAnimation;
 	}
 	
+	/* Translation Animation */
 	public Animation fromRightToLeftAnimation(long milis, Interpolator animationInterpolator) {
 		Animation fromRightToLeft = new TranslateAnimation(
 				Animation.RELATIVE_TO_PARENT, +1.0f,
@@ -54,4 +59,22 @@ public class CustomAnimation {
 		return inFromRight;
 	}
 	
+	public Animation outToTopAnimation(long milis, Interpolator animationInterpolator) {
+		Animation outToTop = new TranslateAnimation(
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, -1.0f);
+		outToTop.setDuration(milis);
+		outToTop.setInterpolator(animationInterpolator);
+		return outToTop;
+	}
+	
+	/* Scale Animation */
+	public Animation scaleInAnimation(long milis, Interpolator animationInterpolator, Context context) {
+		Animation scaleIn = AnimationUtils.loadAnimation(context, R.anim.scale_in_anim);
+		scaleIn.setDuration(milis);
+		scaleIn.setInterpolator(animationInterpolator);
+		return scaleIn;
+	}	
 }

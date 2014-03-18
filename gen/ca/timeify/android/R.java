@@ -14,14 +14,17 @@ public final class R {
         public static final int browse_btn_click=0x7f040002;
         public static final int camera_btn_click=0x7f040003;
         public static final int custom_overshoot_interpolator=0x7f040004;
+        public static final int scale_in_anim=0x7f040005;
     }
     public static final class attr {
     }
     public static final class color {
-        public static final int blue_text=0x7f050002;
-        public static final int gray=0x7f050005;
-        public static final int gray_dark=0x7f050003;
-        public static final int gray_darkblue=0x7f050004;
+        public static final int blue_text=0x7f050004;
+        public static final int gray=0x7f050007;
+        public static final int gray_dark=0x7f050005;
+        public static final int gray_darkblue=0x7f050006;
+        public static final int holo_green_light=0x7f050003;
+        public static final int holo_red_light=0x7f050002;
         public static final int yorkU_Red=0x7f050000;
         public static final int yorkU_White=0x7f050001;
     }
@@ -35,16 +38,18 @@ public final class R {
         public static final int activity_horizontal_margin=0x7f060000;
         public static final int activity_vertical_margin=0x7f060001;
         public static final int margin=0x7f060004;
-        public static final int margin_lg=0x7f060006;
+        public static final int margin_lg=0x7f060007;
         public static final int margin_med=0x7f060005;
+        public static final int margin_medlg=0x7f060006;
         public static final int margin_sm=0x7f060003;
+        public static final int margin_vlg=0x7f060008;
         /**  Splash Card dimensions 
          */
         public static final int splashCardRadius=0x7f060002;
         /**  Button Dimens 
          */
-        public static final int yesnoBtn=0x7f060007;
-        public static final int yesnoRingThinkness=0x7f060008;
+        public static final int yesnoBtn=0x7f060009;
+        public static final int yesnoRingThinkness=0x7f06000a;
     }
     public static final class drawable {
         public static final int ab_background_textured_yorku=0x7f020000;
@@ -93,12 +98,14 @@ public final class R {
         public static final int yourtime_container=0x7f02002b;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0005;
+        public static final int action_settings=0x7f0a0007;
         public static final int browseImg_btn=0x7f0a0002;
         public static final int capture_btn=0x7f0a0001;
         public static final int instructionsText=0x7f0a0000;
+        public static final int noBtn=0x7f0a0005;
         public static final int previewImageView=0x7f0a0003;
-        public static final int splashIcon=0x7f0a0004;
+        public static final int splashIcon=0x7f0a0006;
+        public static final int yesBtn=0x7f0a0004;
     }
     public static final class layout {
         public static final int image_capture_view=0x7f030000;
@@ -114,11 +121,13 @@ public final class R {
         public static final int browse_btn=0x7f070007;
         public static final int hello_world=0x7f070002;
         public static final int instructionsText=0x7f070009;
+        public static final int noBtnInformation=0x7f07000b;
         public static final int selectImage=0x7f070008;
         public static final int splash_firstline=0x7f070004;
         public static final int splash_secondline=0x7f070005;
         public static final int splash_text=0x7f070003;
         public static final int splash_thirdline=0x7f070006;
+        public static final int yesBtnInformation=0x7f07000a;
     }
     public static final class style {
         public static final int ActionBar_Solid_Yorku=0x7f080003;

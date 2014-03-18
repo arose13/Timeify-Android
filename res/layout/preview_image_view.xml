@@ -11,5 +11,35 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         tools:ignore="ContentDescription" />
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="@dimen/margin_lg">
+        
+        <ImageView
+	        android:id="@+id/yesBtn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentRight="true"
+			android:padding="@dimen/margin_med"
+	        android:src="@drawable/yes"
+	        android:background="@drawable/yes_btn" 
+	        android:contentDescription="@string/yesBtnInformation"/>
+	
+	    <ImageView
+	        android:id="@+id/noBtn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentBottom="true"
+	        android:padding="@dimen/margin_med"
+	        android:src="@drawable/no"
+	        android:background="@drawable/no_btn"
+	        android:contentDescription="@string/noBtnInformation" />
+        
+    </RelativeLayout>
+    
 
 </RelativeLayout>

@@ -10,10 +10,12 @@
     <dimen name="margin_sm">4dp</dimen>
     <dimen name="margin">8dp</dimen>
     <dimen name="margin_med">16dp</dimen>
+    <dimen name="margin_medlg">24dp</dimen>
     <dimen name="margin_lg">32dp</dimen>
+    <dimen name="margin_vlg">64dp</dimen>
     
     <!-- Button Dimens -->
-    <dimen name="yesnoBtn">48dp</dimen>
+    <dimen name="yesnoBtn">96dp</dimen>
     <dimen name="yesnoRingThinkness">4dp</dimen>
 
 </resources>
