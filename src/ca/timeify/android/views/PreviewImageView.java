@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import ca.timeify.android.R;
 import ca.timeify.android.activities.BaseActivity;
+import ca.timeify.android.data.CustomAnimation;
 import ca.timeify.android.data.ImageProcessor;
 
 import android.content.Intent;
@@ -140,8 +141,8 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	}
 
 	private void setupExitAnimations() {
-		noBtnExitAnimation = customAnimation.outToTopAnimation(android.R.integer.config_shortAnimTime, new AnticipateInterpolator(1.0f));
-		yesBtnExitAnimation = customAnimation.outToTopAnimation(android.R.integer.config_shortAnimTime, new AnticipateInterpolator(1.0f));
+		noBtnExitAnimation = customAnimation.outToTopAnimation(CustomAnimation.SHORT_ANIMATION_DURATION, new AnticipateInterpolator(1.0f));
+		yesBtnExitAnimation = customAnimation.outToTopAnimation(CustomAnimation.SHORT_ANIMATION_DURATION, new AnticipateInterpolator(1.0f));
 		yesBtnExitAnimation.setAnimationListener(new AnimationListener() {
 			
 			@Override

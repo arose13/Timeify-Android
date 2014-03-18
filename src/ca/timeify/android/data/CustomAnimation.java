@@ -10,6 +10,10 @@ import android.view.animation.TranslateAnimation;
 
 public class CustomAnimation {
 	
+	public static final long SHORT_ANIMATION_DURATION = 150;
+	public static final long MEDIUM_ANIMATION_DURATION = 300;
+	public static final long LONG_ANIMATION_DURATION = 400;
+	
 	public long secondsToMilis(long seconds) {
 		return (seconds*1000);
 	}
