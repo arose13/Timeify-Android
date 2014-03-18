@@ -82,7 +82,8 @@ public final class R {
         public static final int tab_unselected_pressed_yorku=0x7f020024;
         public static final int tab_unselected_yorku=0x7f020025;
         public static final int white_btn=0x7f020026;
-        public static final int yourtime_container=0x7f020027;
+        public static final int yes=0x7f020027;
+        public static final int yourtime_container=0x7f020028;
     }
     public static final class id {
         public static final int action_settings=0x7f0a0005;
