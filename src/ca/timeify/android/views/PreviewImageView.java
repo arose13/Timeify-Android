@@ -1,7 +1,10 @@
 package ca.timeify.android.views;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import com.androidquery.AQuery;
 
 import ca.timeify.android.R;
 import ca.timeify.android.activities.BaseActivity;
@@ -30,7 +33,7 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	private static final int KILL_BACK_BTN = 0;
 	private static final int KILL_NO_BTN = 1;
 	private static final int KILL_YES_BTN = 2;
-	
+	 
 	private Uri imageUri;
 	private Intent receivedIntent;
 	private Animation yesBtnAnimation;

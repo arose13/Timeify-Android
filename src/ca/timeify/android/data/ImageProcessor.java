@@ -1,11 +1,19 @@
 package ca.timeify.android.data;
 
+import java.io.File;
+
+import com.androidquery.AQuery;
+
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
+import android.net.Uri;
 
 public class ImageProcessor {
+	
+	public static final int IMAGE_WIDTH_PIXELS = 960;
 	
 	public static Bitmap convertGrayScale(Bitmap inputImage) {
 		/* Manipulation Factors */
@@ -47,6 +55,12 @@ public class ImageProcessor {
 		/* Return grayScaled Image */
 		return bitmapOutput;
 		
+	}
+	
+	public void downsampleImageFromURI(Uri imageURI, int imageWidth, Context dotthis, int imageViewID) {
+		AQuery aq = new AQuery(dotthis);
+		File imgFile = new File(imageURI.getPath());
+		aq.id(imageViewID).image(imgFile, imageWidth);
 	}
 	
 	/* To overly an image over another */
