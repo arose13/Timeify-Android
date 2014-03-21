@@ -1,7 +1,9 @@
 package ca.timeify.android.data;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 
 public class ImageProcessor {
 	
@@ -45,6 +47,15 @@ public class ImageProcessor {
 		/* Return grayScaled Image */
 		return bitmapOutput;
 		
+	}
+	
+	/* To overly an image over another */
+	public static Bitmap overlayBitmap(Bitmap inputBitmap, Bitmap overlayBitmap) {
+		Bitmap finalBitmap = Bitmap.createBitmap(inputBitmap.getWidth(), inputBitmap.getHeight(), inputBitmap.getConfig());
+		Canvas canvas = new Canvas(finalBitmap);
+		canvas.drawBitmap(inputBitmap, new Matrix(), null);
+		canvas.drawBitmap(overlayBitmap, new Matrix(), null);
+		return finalBitmap;
 	}
 	
 }
