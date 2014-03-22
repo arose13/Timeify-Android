@@ -1,18 +1,16 @@
 package ca.timeify.android.data;
 
-import java.io.File;
-
-import com.androidquery.AQuery;
-
-import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
-import android.net.Uri;
+import android.util.Log;
 
 public class ImageProcessor {
 	
+	private static final String CLASSTAG = "ImageProcessor";
 	public static final int IMAGE_WIDTH_PIXELS = 960;
 	
 	public static Bitmap convertGrayScale(Bitmap inputImage) {
@@ -53,14 +51,41 @@ public class ImageProcessor {
 		}
 		
 		/* Return grayScaled Image */
+		Log.d(CLASSTAG, "grayscaler ran");
 		return bitmapOutput;
 		
 	}
 	
-	public void downsampleImageFromURI(Uri imageURI, int imageWidth, Context dotthis, int imageViewID) {
-		AQuery aq = new AQuery(dotthis);
-		File imgFile = new File(imageURI.getPath());
-		aq.id(imageViewID).image(imgFile, imageWidth);
+	/* DownSampler */
+	public static Bitmap downsampleBitmap(int imageWidth, int targetWidth, String imageContentPath) {
+		final Options bitmapOptions = new Options();
+		bitmapOptions.inDensity = sampleSizer(imageWidth, targetWidth);
+		bitmapOptions.inTargetDensity = 1;
+		Bitmap scaledBitmap = BitmapFactory.decodeFile(imageContentPath, bitmapOptions);
+		scaledBitmap.setDensity(Bitmap.DENSITY_NONE);
+		Log.d(CLASSTAG, "DownSampler ran");
+		return scaledBitmap;
+	}
+	
+	public static int getImageWidthFromContentPath(String imageContentPath) {
+		Options options = new Options();
+		options.inJustDecodeBounds = true;
+		BitmapFactory.decodeFile(imageContentPath, options);
+		int imageWidth = options.outWidth;
+		return imageWidth;
+	}
+	
+	/* Required for DownSampler */
+	private static int sampleSizer(int width, int target) {
+		int result = 1;
+		for (int i = 0; i < 10; i++) {
+			if (width < target * 2) {
+				break;
+			}
+			width = width / 2;
+			result = result * 2;
+		}
+		return result;
 	}
 	
 	/* To overly an image over another */

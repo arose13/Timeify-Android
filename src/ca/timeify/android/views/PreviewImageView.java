@@ -1,17 +1,12 @@
 package ca.timeify.android.views;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import com.androidquery.AQuery;
-
 import ca.timeify.android.R;
 import ca.timeify.android.activities.BaseActivity;
 import ca.timeify.android.data.CustomAnimation;
 import ca.timeify.android.data.ImageProcessor;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -28,6 +23,7 @@ import android.widget.ImageView;
 
 public class PreviewImageView extends BaseActivity implements OnClickListener {
 	
+	private static final String CLASSTAG = "PreviewImageView";
 	private static final long ANIMATION_DURATION = 300;
 	private static final long OVERALL_DELAY = 150;
 	private static final int KILL_BACK_BTN = 0;
@@ -72,7 +68,7 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		imageUri = receivedIntent.getParcelableExtra(IMAGE_URI_KEY);
 		
 		// Being Image Processing
-		new ProcessImageASync().execute(getBitmapFromUri(imageUri));
+		new ProcessImageASync().execute(imageUri);
 	}
 	
 	@Override
@@ -165,31 +161,61 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		});
 	}
 	
-	private Bitmap getBitmapFromUri(Uri imageUri) {
-		Bitmap bitmap = null;
-		try {
-			bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+//	private Bitmap getBitmapFromUri(Uri imageUri) {
+//		Bitmap bitmap = null;
+//		try {
+//			bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		return bitmap;
+//	}
+	
+	private String getPathFromUri(Uri contentUri) {
+		String path = null;
+		String[] projection = { MediaStore.Images.Media.DATA };
+		Cursor cursor = getContentResolver().query(contentUri, projection, null, null, null);
+		if (cursor.moveToFirst()) {
+			int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+			path = cursor.getString(columnIndex);
 		}
-		return bitmap;
+		cursor.close();
+		return path;
 	}
 	
 	/* Image Processing Task */
-	private class ProcessImageASync extends AsyncTask<Bitmap, Void, Bitmap> {
-
+	private class ProcessImageASync extends AsyncTask<Uri, Void, Bitmap> {
+		
 		@Override
-		protected Bitmap doInBackground(Bitmap... bitmaps) {
-			Log.d("previewImageView", "async task ran");
-			Bitmap processedBitmap = ImageProcessor.convertGrayScale(bitmaps[0]);
-			return processedBitmap;
+		protected Bitmap doInBackground(Uri... uris) {
+			Log.d(CLASSTAG, "async task ran");
+			Bitmap inputBitmap;
+			String contentPath = getPathFromUri(uris[0]);
+			
+			// Down sampling
+			inputBitmap = ImageProcessor.downsampleBitmap(
+					ImageProcessor.getImageWidthFromContentPath(contentPath), 
+					ImageProcessor.IMAGE_WIDTH_PIXELS, 
+					contentPath);
+			previewImageView.setImageBitmap(inputBitmap);
+			Log.d(CLASSTAG, "downsampling complete");
+			
+			// GrayScaling
+			inputBitmap = ImageProcessor.convertGrayScale(inputBitmap);
+			Log.d(CLASSTAG, "gray scaling complete");
+			
+			// Overlaying
+			// TODO Overlaying the Lassonde or YU graphic
+			
+			return inputBitmap;
 		}
 		
 		@Override
 		protected void onPostExecute(Bitmap resultImage) {
 			super.onPostExecute(resultImage);
+			Log.d(CLASSTAG, "onPostExecute ran");
 			previewImageView.setImageBitmap(resultImage);
 		}
 		
