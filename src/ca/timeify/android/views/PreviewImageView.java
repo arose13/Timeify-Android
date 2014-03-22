@@ -122,11 +122,10 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 			
 		case KILL_YES_BTN:
 			// Set Delays
+			setupConfirmAnimations();
 			noBtnExitAnimation.setStartOffset(OVERALL_DELAY);
 			yesBtnExitAnimation.setStartOffset(0);
 			startExitAnimation();
-			// To Next Activity
-			// TODO THE FINAL ACTIVITY!
 			break;
 
 		default:
@@ -161,17 +160,28 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		});
 	}
 	
-//	private Bitmap getBitmapFromUri(Uri imageUri) {
-//		Bitmap bitmap = null;
-//		try {
-//			bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		return bitmap;
-//	}
+	private void setupConfirmAnimations() {
+		noBtnExitAnimation = customAnimation.outToTopAnimation(CustomAnimation.SHORT_ANIMATION_DURATION, new AnticipateInterpolator(1.0f));
+		yesBtnExitAnimation = customAnimation.outToTopAnimation(CustomAnimation.SHORT_ANIMATION_DURATION, new AnticipateInterpolator(1.0f));
+		yesBtnExitAnimation.setAnimationListener(new AnimationListener() {
+			
+			@Override
+			public void onAnimationStart(Animation animation) {
+				// Do Nothing
+			}
+			
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// Do Nothing
+			}
+			
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				// TODO trigger the next activity
+				Log.d(CLASSTAG, "next activity called");
+			}
+		});
+	}
 	
 	private String getPathFromUri(Uri contentUri) {
 		String path = null;
