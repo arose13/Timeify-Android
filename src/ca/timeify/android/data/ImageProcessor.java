@@ -88,6 +88,12 @@ public class ImageProcessor {
 		return result;
 	}
 	
+	/* Resize image to background image */
+	public static Bitmap resizeToReferenceBitmap(Bitmap toResizeBitmap, int referenceImageHeight) {
+		Bitmap resizedBitmap = Bitmap.createScaledBitmap(toResizeBitmap, referenceImageHeight, referenceImageHeight, false);
+		return resizedBitmap;
+	}
+	
 	/* To overly an image over another */
 	public static Bitmap overlayBitmap(Bitmap inputBitmap, Bitmap overlayBitmap) {
 		Bitmap finalBitmap = Bitmap.createBitmap(inputBitmap.getWidth(), inputBitmap.getHeight(), inputBitmap.getConfig());
@@ -96,5 +102,5 @@ public class ImageProcessor {
 		canvas.drawBitmap(overlayBitmap, new Matrix(), null);
 		return finalBitmap;
 	}
-	
+
 }

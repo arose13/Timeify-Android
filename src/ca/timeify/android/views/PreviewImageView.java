@@ -8,6 +8,7 @@ import ca.timeify.android.data.ImageProcessor;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	private static final int KILL_BACK_BTN = 0;
 	private static final int KILL_NO_BTN = 1;
 	private static final int KILL_YES_BTN = 2;
-	 
+	
 	private Uri imageUri;
 	private Intent receivedIntent;
 	private Animation yesBtnAnimation;
@@ -103,7 +104,7 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		}
 	}
 	
-	// On back or Delete Button Select
+	/* On back or Delete Button Select */
 	private void killActivityProcedure(int killConstant) {
 		switch (killConstant) {
 		case KILL_BACK_BTN:
@@ -183,6 +184,7 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		});
 	}
 	
+	/* Universally get content path from URI */
 	private String getPathFromUri(Uri contentUri) {
 		String path = null;
 		String[] projection = { MediaStore.Images.Media.DATA };
@@ -209,7 +211,6 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 					ImageProcessor.getImageWidthFromContentPath(contentPath), 
 					ImageProcessor.IMAGE_WIDTH_PIXELS, 
 					contentPath);
-			previewImageView.setImageBitmap(inputBitmap);
 			Log.d(CLASSTAG, "downsampling complete");
 			
 			// GrayScaling
@@ -217,7 +218,10 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 			Log.d(CLASSTAG, "gray scaling complete");
 			
 			// Overlaying
-			// TODO Overlaying the Lassonde or YU graphic
+			Bitmap overlayBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.red_frame);
+			overlayBitmap = ImageProcessor.resizeToReferenceBitmap(overlayBitmap, inputBitmap.getHeight());
+			inputBitmap = ImageProcessor.overlayBitmap(inputBitmap, overlayBitmap);
+			Log.d(CLASSTAG, "overlaying complete");
 			
 			return inputBitmap;
 		}
