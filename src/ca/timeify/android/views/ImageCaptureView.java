@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 
 public class ImageCaptureView extends BaseActivity implements OnClickListener {
 	
+	private static final String CLASSTAG = "ImageCaptureView";
 	private static final long ANIMATION_DURATION = 300;
 	private static final int IMAGECAPTURE_CODE = 2014;
 	private static final int BROWSEIMAGE_CODE = 2015;
@@ -72,6 +74,7 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 	}
 	
 	private void cameraIntent() {
+		Log.d(CLASSTAG, "cameraIntent() ran");
 		Intent cameraStartIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 		startActivityForResult(cameraStartIntent, IMAGECAPTURE_CODE);
 	}
@@ -82,7 +85,7 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 		Uri imageUri;
 		
 		if (resultCode == RESULT_OK) {
-			Log.d("ImageCapture", "result ok");
+			Log.d(CLASSTAG, "result ok");
 			
 			// Figure where the image is coming from.
 			switch (requestCode) {
@@ -91,7 +94,7 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 				receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
 				imageUri = data.getData();
 				exportImageIntent(receivedImage, imageUri, ImageCaptureView.this, PreviewImageView.class);
-				Log.d("ImageCapture", "camera successfully ran");
+				Log.d(CLASSTAG, "camera successfully ran");
 				break;
 				
 			case BROWSEIMAGE_CODE:
@@ -99,16 +102,16 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 				receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
 				imageUri = data.getData();
 				exportImageIntent(receivedImage, imageUri, ImageCaptureView.this, PreviewImageView.class);
-				Log.d("ImageCapture", "browse successfully ran");
+				Log.d(CLASSTAG, "browse successfully ran");
 				break;
 
 			default:
-				Log.e("ImageCapture", "nothing ran");
+				Log.e(CLASSTAG, "nothing ran");
 				break;
 			}
 		} else {
 			// Result code,
-			Log.e("ImageCapture", "result failed");
+			Log.e(CLASSTAG, "result failed");
 		}
 		
 	}
@@ -118,8 +121,26 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.capture_btn:
 			/* CaptureBtn has been clicked */
-			captureButton.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.camera_btn_click));
-			cameraIntent();
+			Animation cameraClickAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.camera_btn_click);
+			cameraClickAnimation.setAnimationListener(new AnimationListener() {
+				
+				@Override
+				public void onAnimationStart(Animation animation) {
+					// Do Nothing
+				}
+				
+				@Override
+				public void onAnimationRepeat(Animation animation) {
+					// Do Nothing
+				}
+				
+				@Override
+				public void onAnimationEnd(Animation animation) {
+					cameraIntent();
+					Log.d(CLASSTAG, "cameraIntet() called");
+				}
+			});
+			captureButton.startAnimation(cameraClickAnimation);
 			break;
 			
 		case R.id.browseImg_btn:
