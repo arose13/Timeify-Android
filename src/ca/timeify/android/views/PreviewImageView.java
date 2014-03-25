@@ -218,10 +218,14 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 			Log.d(CLASSTAG, "gray scaling complete");
 			
 			// Overlaying
-			Bitmap overlayBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.red_frame);
+			Bitmap overlayBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.red_frame_text);
 			overlayBitmap = ImageProcessor.resizeToReferenceBitmap(overlayBitmap, inputBitmap.getHeight());
 			inputBitmap = ImageProcessor.overlayBitmap(inputBitmap, overlayBitmap);
 			Log.d(CLASSTAG, "overlaying complete");
+			
+			// Text Overlaying
+			// TODO add text to the image
+			Log.d(CLASSTAG, "text overlaying complete");
 			
 			return inputBitmap;
 		}

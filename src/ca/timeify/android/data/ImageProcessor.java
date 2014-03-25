@@ -102,5 +102,22 @@ public class ImageProcessor {
 		canvas.drawBitmap(overlayBitmap, new Matrix(), null);
 		return finalBitmap;
 	}
+	
+	/* To overlay text over an image */
+//	public static Bitmap overlayTextToBitmap(Bitmap inputBitmap, String watermark, Point location, Context context) {
+//		int width = inputBitmap.getWidth();
+//		int height = inputBitmap.getHeight();
+//		Bitmap finalBitmap = Bitmap.createBitmap(width, height, inputBitmap.getConfig()); 
+//		Canvas canvas = new Canvas(finalBitmap);
+//		canvas.drawBitmap(inputBitmap, new Matrix(), null);
+//		
+//		// Generate text
+//		Paint paint = new Paint();
+//		float textSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20f, context.getResources().getDisplayMetrics());
+//		paint.setColor(Color.rgb(255, 255, 255));
+//		paint.setTextSize(textSize);
+//		paint.setAntiAlias(true);
+//		canvas.drawt
+//	}
 
 }
