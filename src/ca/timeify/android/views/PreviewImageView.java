@@ -179,6 +179,7 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 			@Override
 			public void onAnimationEnd(Animation animation) {
 				// TODO trigger the next activity
+				Intent confirmImageIntent = new Intent(PreviewImageView.this, ConfirmImageView.class);
 				Log.d(CLASSTAG, "next activity called");
 			}
 		});
