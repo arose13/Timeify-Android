@@ -5,10 +5,10 @@
     
     <rotate 
         android:fromDegrees="0"
-        android:toDegrees="720"
+        android:toDegrees="360"
         android:pivotX="50%"
         android:pivotY="50%"
-        android:duration="@android:integer/config_mediumAnimTime"
+        android:duration="@android:integer/config_shortAnimTime"
         android:interpolator="@android:anim/decelerate_interpolator" />
     
 </set>

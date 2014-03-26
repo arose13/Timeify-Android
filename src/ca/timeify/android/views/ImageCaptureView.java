@@ -74,7 +74,6 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 	}
 	
 	private void cameraIntent() {
-		Log.d(CLASSTAG, "cameraIntent() ran");
 		Intent cameraStartIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 		startActivityForResult(cameraStartIntent, IMAGECAPTURE_CODE);
 	}
@@ -145,8 +144,26 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 			
 		case R.id.browseImg_btn:
 			/* BrowseBtn has been clicked */
-			browseButton.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.browse_btn_click));
-			browseImageIntent();
+			Animation browseAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.browse_btn_click);
+			browseAnimation.setAnimationListener(new AnimationListener() {
+				
+				@Override
+				public void onAnimationStart(Animation animation) {
+					// Do Nothing
+				}
+				
+				@Override
+				public void onAnimationRepeat(Animation animation) {
+					// Do Nothing
+				}
+				
+				@Override
+				public void onAnimationEnd(Animation animation) {
+					browseImageIntent();
+					Log.d(CLASSTAG, "browseImageIntent() called");
+				}
+			});
+			browseButton.startAnimation(browseAnimation);
 			break;
 
 		default: // Do Nothing
