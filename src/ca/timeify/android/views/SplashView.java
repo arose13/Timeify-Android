@@ -12,7 +12,7 @@ import ca.timeify.android.activities.BaseActivity;
 
 public class SplashView extends BaseActivity {
 	
-	private static int splashViewTimer = 2000;
+	private static int splashViewTimer = 1000;
 	private static long splashIconAnimationDuration = 500;
 	private static long splashIconAnimationDelay = 250;
 	
