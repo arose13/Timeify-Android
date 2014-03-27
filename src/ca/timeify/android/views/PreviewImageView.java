@@ -5,6 +5,8 @@ import ca.timeify.android.activities.BaseActivity;
 import ca.timeify.android.data.CustomAnimation;
 import ca.timeify.android.data.ImageProcessor;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -13,6 +15,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.MediaStore.Images;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,6 +35,7 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	private static final int KILL_YES_BTN = 2;
 	
 	private Uri imageUri;
+	private Bitmap completedBitmap;
 	private Intent receivedIntent;
 	private Animation yesBtnAnimation;
 	private Animation noBtnAnimation;
@@ -178,11 +182,62 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 			
 			@Override
 			public void onAnimationEnd(Animation animation) {
-				// TODO trigger the next activity
-				Intent confirmImageIntent = new Intent(PreviewImageView.this, ConfirmImageView.class);
+				shareDialog();
 				Log.d(CLASSTAG, "next activity called");
 			}
 		});
+	}
+	
+	/* Share Dialog */
+	private void shareDialog() {
+		AlertDialog.Builder shareOptionList = new AlertDialog.Builder(PreviewImageView.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+		shareOptionList.setCancelable(true);
+		shareOptionList.setItems(R.array.shareDialog, new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				switch (which) {
+				case 0:
+					// Share Button was selected
+					shareImage(completedBitmap);
+					break;
+					
+				case 1:
+					// Cancel button  was selected
+					break;
+
+				default:
+					break;
+				}
+			}
+		});
+		shareOptionList.show();
+	}
+	
+	private void shareImage(Bitmap mytimeBitmap) {
+		String mytimePath = Images.Media.insertImage(
+				getContentResolver(), 
+				mytimeBitmap, 
+				mytimeFilenameGenerator(), 
+				mytimeFileDescriptionGenerator(""));
+		Uri mytimeURI = stringToUri(mytimePath);
+		if (mytimeBitmap != null) {
+			Intent mytimeIntent = new Intent(Intent.ACTION_SEND);
+			mytimeIntent.setType("image/*");
+			mytimeIntent.putExtra(Intent.EXTRA_STREAM, mytimeURI);
+			mytimeIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.sharedFrom));
+			startActivity(mytimeIntent);
+		}
+	}
+	
+	private String mytimeFilenameGenerator() {
+		String filename = "MyTime" + getCurrentTime_Miliseconds();
+		return filename;
+	}
+	
+	private String mytimeFileDescriptionGenerator(String goalString) {
+		String fileDescription = getResources().getString(R.string.myTimeDescription) + " " + goalString;
+		return fileDescription;
 	}
 	
 	/* Universally get content path from URI */
@@ -236,6 +291,7 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 			super.onPostExecute(resultImage);
 			Log.d(CLASSTAG, "onPostExecute ran");
 			previewImageView.setImageBitmap(resultImage);
+			completedBitmap = resultImage;
 		}
 		
 	}

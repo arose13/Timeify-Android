@@ -1,5 +1,7 @@
 package ca.timeify.android.activities;
 
+import java.util.Calendar;
+
 import ca.timeify.android.R;
 import ca.timeify.android.data.CustomAnimation;
 import ca.timeify.android.data.Fonts;
@@ -34,6 +36,12 @@ public abstract class BaseActivity extends Activity {
 	protected Uri stringToUri(String inputString) {
 		Uri parsedUri = Uri.parse(inputString);
 		return parsedUri;
+	}
+	
+	protected int getCurrentTime_Miliseconds() {
+		Calendar calendar = Calendar.getInstance();
+		int milis = calendar.get(Calendar.MILLISECOND);
+		return milis;
 	}
 	
 }

@@ -14,5 +14,13 @@
     <string name="instructionsText">Take A Pic</string>
     <string name="yesBtnInformation">Confirm Image</string>
     <string name="noBtnInformation">Delete Image</string>
+    <string name="share_btn">Share My Time</string>
+    <string name="myTimeDescription">This is my time</string>
+    <string name="sharedFrom">Shared From Timeify</string>
+    
+    <string-array name="shareDialog">
+        <item>Share Image</item>
+        <item>Cancel</item>
+    </string-array>
 
 </resources>

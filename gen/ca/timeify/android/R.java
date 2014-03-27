@@ -16,6 +16,9 @@ public final class R {
         public static final int custom_overshoot_interpolator=0x7f040004;
         public static final int scale_in_anim=0x7f040005;
     }
+    public static final class array {
+        public static final int shareDialog=0x7f080000;
+    }
     public static final class attr {
     }
     public static final class color {
@@ -101,14 +104,14 @@ public final class R {
         public static final int yourtime_container=0x7f02002e;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0007;
-        public static final int browseImg_btn=0x7f0a0002;
-        public static final int capture_btn=0x7f0a0001;
-        public static final int instructionsText=0x7f0a0000;
-        public static final int noUIBtn=0x7f0a0005;
-        public static final int previewImageView=0x7f0a0003;
-        public static final int splashIcon=0x7f0a0006;
-        public static final int yesUIBtn=0x7f0a0004;
+        public static final int action_settings=0x7f0b0007;
+        public static final int browseImg_btn=0x7f0b0002;
+        public static final int capture_btn=0x7f0b0001;
+        public static final int instructionsText=0x7f0b0000;
+        public static final int noUIBtn=0x7f0b0005;
+        public static final int previewImageView=0x7f0b0003;
+        public static final int splashIcon=0x7f0b0006;
+        public static final int yesUIBtn=0x7f0b0004;
     }
     public static final class layout {
         public static final int confirm_image_view=0x7f030000;
@@ -117,7 +120,7 @@ public final class R {
         public static final int splash_view=0x7f030003;
     }
     public static final class menu {
-        public static final int main_view=0x7f090000;
+        public static final int main_view=0x7f0a0000;
     }
     public static final class string {
         public static final int action_settings=0x7f070001;
@@ -125,8 +128,11 @@ public final class R {
         public static final int browse_btn=0x7f070007;
         public static final int hello_world=0x7f070002;
         public static final int instructionsText=0x7f070009;
+        public static final int myTimeDescription=0x7f07000d;
         public static final int noBtnInformation=0x7f07000b;
         public static final int selectImage=0x7f070008;
+        public static final int share_btn=0x7f07000c;
+        public static final int sharedFrom=0x7f07000e;
         public static final int splash_firstline=0x7f070004;
         public static final int splash_secondline=0x7f070005;
         public static final int splash_text=0x7f070003;
@@ -134,10 +140,10 @@ public final class R {
         public static final int yesBtnInformation=0x7f07000a;
     }
     public static final class style {
-        public static final int ActionBar_Solid_Yorku=0x7f080003;
-        public static final int ActionBar_Transparent_Yorku=0x7f080004;
-        public static final int ActionBarTabStyle_Yorku=0x7f080007;
-        public static final int ActionButton_CloseMode_Yorku=0x7f08000a;
+        public static final int ActionBar_Solid_Yorku=0x7f090003;
+        public static final int ActionBar_Transparent_Yorku=0x7f090004;
+        public static final int ActionBarTabStyle_Yorku=0x7f090007;
+        public static final int ActionButton_CloseMode_Yorku=0x7f09000a;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -159,18 +165,18 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080001;
-        public static final int DropDownListView_Yorku=0x7f080006;
-        public static final int DropDownNav_Yorku=0x7f080008;
-        public static final int PopupMenu_Yorku=0x7f080005;
-        public static final int ProgressBar_Yorku=0x7f080009;
-        public static final int Theme_Yorku=0x7f080002;
+        public static final int AppTheme=0x7f090001;
+        public static final int DropDownListView_Yorku=0x7f090006;
+        public static final int DropDownNav_Yorku=0x7f090008;
+        public static final int PopupMenu_Yorku=0x7f090005;
+        public static final int ProgressBar_Yorku=0x7f090009;
+        public static final int Theme_Yorku=0x7f090002;
         /**  this style is only referenced in a Light.DarkActionBar based theme 
          */
-        public static final int Theme_Yorku_Widget=0x7f08000b;
+        public static final int Theme_Yorku_Widget=0x7f09000b;
     }
 }
