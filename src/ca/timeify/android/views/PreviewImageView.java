@@ -204,6 +204,7 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 					
 				case 1:
 					// Cancel button  was selected
+					finish(); // TODO This is probably not what a user will expect when clicking this button.
 					break;
 
 				default:
