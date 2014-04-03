@@ -93,7 +93,6 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 				receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
 				imageUri = data.getData();
 				exportImageIntent(receivedImage, imageUri, ImageCaptureView.this, PreviewImageView.class);
-				Log.d(CLASSTAG, "camera successfully ran");
 				break;
 				
 			case BROWSEIMAGE_CODE:
@@ -101,7 +100,6 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 				receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
 				imageUri = data.getData();
 				exportImageIntent(receivedImage, imageUri, ImageCaptureView.this, PreviewImageView.class);
-				Log.d(CLASSTAG, "browse successfully ran");
 				break;
 
 			default:
@@ -136,7 +134,6 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 				@Override
 				public void onAnimationEnd(Animation animation) {
 					cameraIntent();
-					Log.d(CLASSTAG, "cameraIntet() called");
 				}
 			});
 			captureButton.startAnimation(cameraClickAnimation);
@@ -160,7 +157,6 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 				@Override
 				public void onAnimationEnd(Animation animation) {
 					browseImageIntent();
-					Log.d(CLASSTAG, "browseImageIntent() called");
 				}
 			});
 			browseButton.startAnimation(browseAnimation);
