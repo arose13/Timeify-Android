@@ -204,7 +204,10 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 					
 				case 1:
 					// Cancel button  was selected
-					finish(); // TODO This is probably not what a user will expect when clicking this button.
+					Intent imageCaptureViewIntent = new Intent(PreviewImageView.this, ImageCaptureView.class);
+					startActivity(imageCaptureViewIntent);
+					overridePendingTransition(R.anim.activity_transition_anim_enter, R.anim.activity_transition_anim_exit);
+					finish();
 					break;
 
 				default:
