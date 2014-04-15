@@ -26,7 +26,8 @@
 			android:padding="@dimen/margin_med"
 	        android:src="@drawable/yes"
 	        android:background="@drawable/yes_btn" 
-	        android:contentDescription="@string/yesBtnInformation"/>
+	        android:contentDescription="@string/yesBtnInformation"
+	        android:visibility="invisible" />
 	
 	    <ImageView
 	        android:id="@+id/noUIBtn"
@@ -37,7 +38,8 @@
 	        android:padding="@dimen/margin_med"
 	        android:src="@drawable/no"
 	        android:background="@drawable/no_btn"
-	        android:contentDescription="@string/noBtnInformation" />
+	        android:contentDescription="@string/noBtnInformation"
+	        android:visibility="invisible" />
         
     </RelativeLayout>
     

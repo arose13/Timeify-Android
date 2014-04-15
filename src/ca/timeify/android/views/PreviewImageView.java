@@ -77,14 +77,6 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	}
 	
 	@Override
-	protected void onStart() {
-		super.onStart();
-		// Start Animations
-		noButton.startAnimation(noBtnAnimation);
-		yesButton.startAnimation(yesBtnAnimation);
-	}
-	
-	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
 		killActivityProcedure(KILL_BACK_BTN);
@@ -106,6 +98,15 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		default:
 			break;
 		}
+	}
+	
+	private void uiStartButtonAnimation() {
+		// Make Buttons Visible
+		noButton.setVisibility(View.VISIBLE);
+		yesButton.setVisibility(View.VISIBLE);
+		// Start Animation
+		noButton.startAnimation(noBtnAnimation);
+		yesButton.startAnimation(yesBtnAnimation);
 	}
 	
 	/* On back or Delete Button Select */
@@ -296,6 +297,7 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 			Log.d(CLASSTAG, "onPostExecute ran");
 			previewImageView.setImageBitmap(resultImage);
 			completedBitmap = resultImage;
+			uiStartButtonAnimation();
 		}
 		
 	}
