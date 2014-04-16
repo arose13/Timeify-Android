@@ -10,6 +10,7 @@ import android.view.animation.TranslateAnimation;
 
 public class CustomAnimation {
 	
+	public static final long VERYSHORT_ANIMATION_DURATION = 100;
 	public static final long SHORT_ANIMATION_DURATION = 150;
 	public static final long MEDIUM_ANIMATION_DURATION = 300;
 	public static final long LONG_ANIMATION_DURATION = 400;
@@ -61,6 +62,17 @@ public class CustomAnimation {
 		inFromRight.setDuration(milis);
 		inFromRight.setInterpolator(animationInterpolator);
 		return inFromRight;
+	}
+	
+	public Animation outToLeftAnimation(long milis, Interpolator animationInterpolator) {
+		Animation outToLeft = new TranslateAnimation(
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, -1.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f,
+				Animation.RELATIVE_TO_PARENT, 0.0f);
+		outToLeft.setDuration(milis);
+		outToLeft.setInterpolator(animationInterpolator);
+		return outToLeft;
 	}
 	
 	public Animation outToTopAnimation(long milis, Interpolator animationInterpolator) {

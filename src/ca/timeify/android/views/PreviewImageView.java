@@ -3,6 +3,7 @@ package ca.timeify.android.views;
 import ca.timeify.android.R;
 import ca.timeify.android.activities.BaseActivity;
 import ca.timeify.android.data.CustomAnimation;
+import ca.timeify.android.data.Fonts;
 import ca.timeify.android.data.ImageProcessor;
 
 import android.app.AlertDialog;
@@ -24,6 +25,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnticipateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class PreviewImageView extends BaseActivity implements OnClickListener {
 	
@@ -44,6 +46,9 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	private ImageView previewImageView;
 	private ImageView yesButton;
 	private ImageView noButton;
+	private TextView loadingTextView;
+	
+	private String[] LOADING_STEPS_ARRAY;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +56,16 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		setContentView(R.layout.preview_image_view);
 		Log.d("PreviewImageView", "PreviewImageView started");
 		
+		// Starting all Variables
+		LOADING_STEPS_ARRAY = getResources().getStringArray(R.array.loadingTextSteps);
+		
 		// Find Views
 		yesButton = (ImageView) findViewById(R.id.yesUIBtn);
 		noButton = (ImageView) findViewById(R.id.noUIBtn);
+		loadingTextView = (TextView) findViewById(R.id.loadingTextView);
 		previewImageView = (ImageView) findViewById(R.id.previewImageView);
 		previewImageView.setVisibility(View.VISIBLE);
+		loadingTextView.setText(LOADING_STEPS_ARRAY[0]);
 		
 		// Set OnClickListners
 		yesButton.setOnClickListener(this);
@@ -74,6 +84,12 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		
 		// Being Image Processing
 		new ProcessImageASync().execute(imageUri);
+	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		customFonts.typeFaceConstructor(loadingTextView, Fonts.Roboto.LIGHT, getAssets());
 	}
 	
 	@Override
@@ -259,7 +275,7 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	}
 	
 	/* Image Processing Task */
-	private class ProcessImageASync extends AsyncTask<Uri, Void, Bitmap> {
+	private class ProcessImageASync extends AsyncTask<Uri, Integer, Bitmap> {
 		
 		@Override
 		protected Bitmap doInBackground(Uri... uris) {
@@ -278,6 +294,9 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 			inputBitmap = ImageProcessor.convertGrayScale(inputBitmap);
 			Log.d(CLASSTAG, "gray scaling complete");
 			
+			// Progress Update
+			publishProgress(1);
+			
 			// Overlaying
 			Bitmap overlayBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.red_frame_text);
 			overlayBitmap = ImageProcessor.resizeToReferenceBitmap(overlayBitmap, inputBitmap.getHeight());
@@ -292,9 +311,33 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		}
 		
 		@Override
+		protected void onProgressUpdate(Integer... progress) {
+			super.onProgressUpdate(progress);
+			switch (progress[0]) {
+			case 0:
+				// Show Please Wait
+				break;
+			case 1:
+				// Show Almost There
+				loadingTextView.setText(LOADING_STEPS_ARRAY[1]);
+				loadingTextView.startAnimation(customAnimation.inFromRightAnimation(CustomAnimation.SHORT_ANIMATION_DURATION, new OvershootInterpolator(1.0f)));
+				break;
+			case 2:
+				// Show Nearly Done
+				loadingTextView.setText(LOADING_STEPS_ARRAY[2]);
+				loadingTextView.startAnimation(customAnimation.inFromRightAnimation(CustomAnimation.SHORT_ANIMATION_DURATION, new OvershootInterpolator(1.0f)));
+				break;
+
+			default:
+				break;
+			}
+		}
+		
+		@Override
 		protected void onPostExecute(Bitmap resultImage) {
 			super.onPostExecute(resultImage);
 			Log.d(CLASSTAG, "onPostExecute ran");
+			loadingTextView.setVisibility(View.INVISIBLE);
 			previewImageView.setImageBitmap(resultImage);
 			completedBitmap = resultImage;
 			uiStartButtonAnimation();

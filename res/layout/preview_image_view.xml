@@ -12,6 +12,15 @@
         android:layout_centerInParent="true"
         tools:ignore="ContentDescription" />
     
+    <TextView
+        android:id="@+id/loadingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@array/loadingTextSteps"
+        android:textColor="@color/yorkU_White"
+        android:textSize="24sp" />
+    
     <RelativeLayout 
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

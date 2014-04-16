@@ -17,6 +17,7 @@ public final class R {
         public static final int scale_in_anim=0x7f040005;
     }
     public static final class array {
+        public static final int loadingTextSteps=0x7f080001;
         public static final int shareDialog=0x7f080000;
     }
     public static final class attr {
@@ -104,14 +105,15 @@ public final class R {
         public static final int yourtime_container=0x7f02002e;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b0007;
+        public static final int action_settings=0x7f0b0008;
         public static final int browseImg_btn=0x7f0b0002;
         public static final int capture_btn=0x7f0b0001;
         public static final int instructionsText=0x7f0b0000;
-        public static final int noUIBtn=0x7f0b0005;
+        public static final int loadingTextView=0x7f0b0004;
+        public static final int noUIBtn=0x7f0b0006;
         public static final int previewImageView=0x7f0b0003;
-        public static final int splashIcon=0x7f0b0006;
-        public static final int yesUIBtn=0x7f0b0004;
+        public static final int splashIcon=0x7f0b0007;
+        public static final int yesUIBtn=0x7f0b0005;
     }
     public static final class layout {
         public static final int confirm_image_view=0x7f030000;

@@ -22,5 +22,11 @@
         <item>Share Image</item>
         <item>Cancel</item>
     </string-array>
+    
+    <string-array name="loadingTextSteps">
+        <item>Please Wait</item>
+        <item>Almost There</item>
+        <item>Nearly Done</item>
+    </string-array>
 
 </resources>
