@@ -1,11 +1,16 @@
 package ca.timeify.android.data;
 
+import java.io.File;
+
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
+import android.media.ExifInterface;
+import android.net.Uri;
 import android.util.Log;
 
 public class ImageProcessor {
@@ -73,6 +78,41 @@ public class ImageProcessor {
 		BitmapFactory.decodeFile(imageContentPath, options);
 		int imageWidth = options.outWidth;
 		return imageWidth;
+	}
+	
+	/* Photo Orientation */
+	public static int getPhotoOrientation(Context context, Uri imageUri, String imagePath) {
+		int rotate = 0;
+		try {
+			context.getContentResolver().notifyChange(imageUri, null);
+			File imageFile = new File(imagePath);
+			
+			ExifInterface exif = new ExifInterface(imageFile.getAbsolutePath());
+			int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+			
+			switch (orientation) {
+			case ExifInterface.ORIENTATION_ROTATE_270:
+				rotate = 270;
+				break;
+			case ExifInterface.ORIENTATION_ROTATE_180:
+				rotate = 180;
+				break;
+			case ExifInterface.ORIENTATION_ROTATE_90:
+				rotate = 90;
+				break;
+
+			default:
+				break;
+			}
+			
+			Log.i(CLASSTAG, "Exif orientation: " + orientation);
+			Log.i(CLASSTAG, "Rotate value: " + rotate);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return rotate;
 	}
 	
 	/* Required for DownSampler */
