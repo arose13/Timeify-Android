@@ -290,6 +290,12 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 					contentPath);
 			Log.d(CLASSTAG, "downsampling complete");
 			
+			// Portrait image check and rotation
+			int angle = ImageProcessor.getPhotoOrientation(getApplicationContext(), imageUri, imageUri.getPath());
+			Log.d(CLASSTAG, "found rotation angle");
+			inputBitmap = ImageProcessor.rotateImage(angle, inputBitmap);
+			Log.d(CLASSTAG, "image rotated");
+			
 			// GrayScaling
 			inputBitmap = ImageProcessor.convertGrayScale(inputBitmap);
 			Log.d(CLASSTAG, "gray scaling complete");

@@ -81,7 +81,26 @@ public class ImageProcessor {
 	}
 	
 	/* Photo Orientation */
+	public static Bitmap rotateImage(int angle, Bitmap inputBitmap) {
+		Matrix matrix = new Matrix();
+		matrix.postRotate(angle);
+		Bitmap rotatedBitmap = Bitmap.createBitmap(
+										inputBitmap,
+										0,
+										0,
+										inputBitmap.getWidth(),
+										inputBitmap.getHeight(),
+										matrix,
+										true
+										);
+		return rotatedBitmap;
+	}
+	
 	public static int getPhotoOrientation(Context context, Uri imageUri, String imagePath) {
+		Log.d(CLASSTAG, "imageURI: " + imageUri.toString());
+		Log.d(CLASSTAG, "imagePath: " + imageUri.getPath());
+		
+		// Begin processing
 		int rotate = 0;
 		try {
 			context.getContentResolver().notifyChange(imageUri, null);
