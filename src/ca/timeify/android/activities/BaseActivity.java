@@ -28,7 +28,7 @@ public abstract class BaseActivity extends Activity {
 		Intent imagePreviewIntent = new Intent(classDotThis, classDotClass);
 		imagePreviewIntent.putExtra(IMAGECAPTURE_KEY, image);
 		imagePreviewIntent.putExtra(IMAGE_URI_KEY, imageUri);
-		Log.i("ImageCaptureBundle", imageUri.toString());
+		//Log.i("ImageCaptureBundle", imageUri.toString());
 		startActivity(imagePreviewIntent);
 		overridePendingTransition(R.anim.activity_transition_anim_enter, R.anim.activity_transition_anim_exit);
 	}

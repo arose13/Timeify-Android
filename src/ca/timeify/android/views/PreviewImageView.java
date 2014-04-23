@@ -82,6 +82,9 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		receivedIntent = getIntent();
 		imageUri = receivedIntent.getParcelableExtra(IMAGE_URI_KEY);
 		
+		Log.i("JUSTIN-DEBUG", "MEOW MEOW MEOW");
+		Log.i("JUSTIN-DEBUG", "imageUri: " + imageUri);
+		
 		// Being Image Processing
 		new ProcessImageASync().execute(imageUri);
 	}
@@ -265,12 +268,13 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	private String getPathFromUri(Uri contentUri) {
 		String path = null;
 		String[] projection = { MediaStore.Images.Media.DATA };
-		Cursor cursor = getContentResolver().query(contentUri, projection, null, null, null);
+		Log.i("Justin-Debug", "contentUri: " + contentUri.toString());
+		/*Cursor cursor = getContentResolver().query(contentUri, projection, null, null, null);
 		if (cursor.moveToFirst()) {
 			int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
 			path = cursor.getString(columnIndex);
 		}
-		cursor.close();
+		cursor.close();*/
 		return path;
 	}
 	
@@ -279,9 +283,13 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		
 		@Override
 		protected Bitmap doInBackground(Uri... uris) {
+			
+			Log.i("JUSTIN-DEBUG", "uris: " + uris.toString() + "\turi: " + uris[0]);
+			
 			Log.d(CLASSTAG, "async task ran");
 			Bitmap inputBitmap;
-			String contentPath = getPathFromUri(uris[0]);
+			//String contentPath = getPathFromUri(uris[0]);
+			String contentPath = uris[0].getPath();
 			
 			// Down sampling
 			inputBitmap = ImageProcessor.downsampleBitmap(
