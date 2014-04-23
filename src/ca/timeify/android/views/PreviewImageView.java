@@ -50,6 +50,8 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	
 	private String[] LOADING_STEPS_ARRAY;
 	
+	private int pathType;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -80,6 +82,10 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		
 		// Find received Data
 		receivedIntent = getIntent();
+		
+		// Get path type from ImageCaptureView
+		pathType = receivedIntent.getExtras().getInt(PATHTYPE_KEY);
+		
 		imageUri = receivedIntent.getParcelableExtra(IMAGE_URI_KEY);
 		
 		Log.i("JUSTIN-DEBUG", "MEOW MEOW MEOW");
@@ -269,18 +275,18 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		String path = null;
 		String[] projection = { MediaStore.Images.Media.DATA };
 		Log.i("Justin-Debug", "contentUri: " + contentUri.toString());
-		/*Cursor cursor = getContentResolver().query(contentUri, projection, null, null, null);
+		Cursor cursor = getContentResolver().query(contentUri, projection, null, null, null);
 		if (cursor.moveToFirst()) {
 			int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
 			path = cursor.getString(columnIndex);
 		}
-		cursor.close();*/
+		cursor.close();
 		return path;
 	}
 	
 	/* Image Processing Task */
 	private class ProcessImageASync extends AsyncTask<Uri, Integer, Bitmap> {
-		
+
 		@Override
 		protected Bitmap doInBackground(Uri... uris) {
 			
@@ -289,8 +295,18 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 			Log.d(CLASSTAG, "async task ran");
 			Bitmap inputBitmap;
 			//String contentPath = getPathFromUri(uris[0]);
-			String contentPath = uris[0].getPath();
+			String contentPath = "";
+			if (pathType == 0) {
+				// get uri path regularly
+				contentPath = uris[0].getPath();
+			} else if (pathType == 1) { 
+				// transform content:// path and get it universally
+				contentPath = getPathFromUri(uris[0]);
+			} else {
+				Log.i("ERROR", "Invalid path type passed by ImagePreview!");
+			}
 			
+			Log.i("JUSTIN-DEBUG", "contentPath " + contentPath);
 			// Down sampling
 			inputBitmap = ImageProcessor.downsampleBitmap(
 					ImageProcessor.getImageWidthFromContentPath(contentPath), 

@@ -82,9 +82,13 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 	}
 	
 	private void browseImageIntent() {
-		Intent browseImageIntent = new Intent(Intent.ACTION_GET_CONTENT, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-		browseImageIntent.setType("image/*");
-		startActivityForResult(Intent.createChooser(browseImageIntent, getString(R.string.selectImage)), BROWSEIMAGE_CODE);
+		//Intent browseImageIntent = new Intent(Intent.ACTION_GET_CONTENT, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+		//browseImageIntent.setType("image/*");
+		//startActivityForResult(Intent.createChooser(browseImageIntent, getString(R.string.selectImage)), BROWSEIMAGE_CODE);
+		
+		Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+		photoPickerIntent.setType("image/*");
+		startActivityForResult(photoPickerIntent, BROWSEIMAGE_CODE);   
 	}
 	
 	private void cameraIntent() {
@@ -155,15 +159,16 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 					 */
 					Log.i(CLASSTAG, "imageUri.toString() : " + imageUri.getPath());
 					Bitmap bitmap = BitmapFactory.decodeFile(imageUri.getPath());
-					exportImageIntent(receivedImage, imageUri, ImageCaptureView.this, PreviewImageView.class);
+					exportImageIntent(receivedImage, imageUri, 0, ImageCaptureView.this, PreviewImageView.class);
 				}
 				break;
 				
 			case BROWSEIMAGE_CODE:
 				/* Received Image from browsing.*/
-				receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
+				//receivedImage = (Bitmap) data.getExtras().get(IMAGECAPTURE_KEY);
 				imageUri = data.getData();
-				exportImageIntent(receivedImage, imageUri, ImageCaptureView.this, PreviewImageView.class);
+				Log.i(CLASSTAG, ""+imageUri);
+				exportImageIntent(receivedImage, imageUri, 1, ImageCaptureView.this, PreviewImageView.class);
 				break;
 
 			default:

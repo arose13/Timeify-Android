@@ -22,10 +22,12 @@ public abstract class BaseActivity extends Activity {
 	/* Constants */
 	protected static final String IMAGECAPTURE_KEY = "data";
 	protected static final String IMAGE_URI_KEY = "imageuri";
+	protected static final String PATHTYPE_KEY = "pathtype";
 	
 	/* Methods */	
-	protected void exportImageIntent(Bitmap image, Uri imageUri, Context classDotThis, Class<?> classDotClass) {
+	protected void exportImageIntent(Bitmap image, Uri imageUri, int pathType, Context classDotThis, Class<?> classDotClass) {
 		Intent imagePreviewIntent = new Intent(classDotThis, classDotClass);
+		imagePreviewIntent.putExtra(PATHTYPE_KEY, pathType);
 		imagePreviewIntent.putExtra(IMAGECAPTURE_KEY, image);
 		imagePreviewIntent.putExtra(IMAGE_URI_KEY, imageUri);
 		//Log.i("ImageCaptureBundle", imageUri.toString());
