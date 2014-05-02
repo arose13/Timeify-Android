@@ -26,6 +26,7 @@ import android.view.animation.AnticipateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PreviewImageView extends BaseActivity implements OnClickListener {
 	
@@ -314,11 +315,18 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 					contentPath);
 			Log.d(CLASSTAG, "downsampling complete");
 			
+			// Check for image dimensions: height and width
+			Log.i("JUSTIN-DEBUG", "Bitmap width: " + inputBitmap.getWidth() + "\theight: " + inputBitmap.getHeight() );
+			
+			// Check to see if image is in portrait or landscape by comparing dimensions
+			boolean isPortrait = (inputBitmap.getHeight() > inputBitmap.getWidth());
+			Log.i("JUSTIN-DEBUG", "Is image portrait orientation? " + isPortrait );
+			
 			// Portrait image check and rotation
-			int angle = ImageProcessor.getPhotoOrientation(getApplicationContext(), imageUri, imageUri.getPath());
+			/*int angle = ImageProcessor.getPhotoOrientation(getApplicationContext(), imageUri, imageUri.getPath());
 			Log.d(CLASSTAG, "found rotation angle");
 			inputBitmap = ImageProcessor.rotateImage(angle, inputBitmap);
-			Log.d(CLASSTAG, "image rotated");
+			Log.d(CLASSTAG, "image rotated");*/
 			
 			// GrayScaling
 			inputBitmap = ImageProcessor.convertGrayScale(inputBitmap);
