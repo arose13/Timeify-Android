@@ -26,6 +26,7 @@ import android.view.animation.AnticipateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PreviewImageView extends BaseActivity implements OnClickListener {
 	
@@ -49,6 +50,8 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	private TextView loadingTextView;
 	
 	private String[] LOADING_STEPS_ARRAY;
+	
+	private int pathType;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +83,14 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 		
 		// Find received Data
 		receivedIntent = getIntent();
+		
+		// Get path type from ImageCaptureView
+		pathType = receivedIntent.getExtras().getInt(PATHTYPE_KEY);
+		
 		imageUri = receivedIntent.getParcelableExtra(IMAGE_URI_KEY);
+		
+		Log.i("JUSTIN-DEBUG", "MEOW MEOW MEOW");
+		Log.i("JUSTIN-DEBUG", "imageUri: " + imageUri);
 		
 		// Being Image Processing
 		new ProcessImageASync().execute(imageUri);
@@ -265,6 +275,7 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	private String getPathFromUri(Uri contentUri) {
 		String path = null;
 		String[] projection = { MediaStore.Images.Media.DATA };
+		Log.i("Justin-Debug", "contentUri: " + contentUri.toString());
 		Cursor cursor = getContentResolver().query(contentUri, projection, null, null, null);
 		if (cursor.moveToFirst()) {
 			int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
@@ -276,13 +287,27 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 	
 	/* Image Processing Task */
 	private class ProcessImageASync extends AsyncTask<Uri, Integer, Bitmap> {
-		
+
 		@Override
 		protected Bitmap doInBackground(Uri... uris) {
+			
+			Log.i("JUSTIN-DEBUG", "uris: " + uris.toString() + "\turi: " + uris[0]);
+			
 			Log.d(CLASSTAG, "async task ran");
 			Bitmap inputBitmap;
-			String contentPath = getPathFromUri(uris[0]);
+			//String contentPath = getPathFromUri(uris[0]);
+			String contentPath = "";
+			if (pathType == 0) {
+				// get uri path regularly
+				contentPath = uris[0].getPath();
+			} else if (pathType == 1) { 
+				// transform content:// path and get it universally
+				contentPath = getPathFromUri(uris[0]);
+			} else {
+				Log.i("ERROR", "Invalid path type passed by ImagePreview!");
+			}
 			
+			Log.i("JUSTIN-DEBUG", "contentPath " + contentPath);
 			// Down sampling
 			inputBitmap = ImageProcessor.downsampleBitmap(
 					ImageProcessor.getImageWidthFromContentPath(contentPath), 
@@ -290,11 +315,18 @@ public class PreviewImageView extends BaseActivity implements OnClickListener {
 					contentPath);
 			Log.d(CLASSTAG, "downsampling complete");
 			
+			// Check for image dimensions: height and width
+			Log.i("JUSTIN-DEBUG", "Bitmap width: " + inputBitmap.getWidth() + "\theight: " + inputBitmap.getHeight() );
+			
+			// Check to see if image is in portrait or landscape by comparing dimensions
+			boolean isPortrait = (inputBitmap.getHeight() > inputBitmap.getWidth());
+			Log.i("JUSTIN-DEBUG", "Is image portrait orientation? " + isPortrait );
+			
 			// Portrait image check and rotation
-			int angle = ImageProcessor.getPhotoOrientation(getApplicationContext(), imageUri, imageUri.getPath());
+			/*int angle = ImageProcessor.getPhotoOrientation(getApplicationContext(), imageUri, imageUri.getPath());
 			Log.d(CLASSTAG, "found rotation angle");
 			inputBitmap = ImageProcessor.rotateImage(angle, inputBitmap);
-			Log.d(CLASSTAG, "image rotated");
+			Log.d(CLASSTAG, "image rotated");*/
 			
 			// GrayScaling
 			inputBitmap = ImageProcessor.convertGrayScale(inputBitmap);
