@@ -177,7 +177,10 @@ public class ImageCaptureView extends BaseActivity implements OnClickListener {
 			}
 		} else {
 			// Result code,
-			Log.e(CLASSTAG, "result failed");
+			// Delete the picture created on camera startup
+			File n = new File(mCurrentPhotoPath);
+			n.delete();
+			Log.e(CLASSTAG, "result failed, temp file deleted");
 		}
 		
 	}
